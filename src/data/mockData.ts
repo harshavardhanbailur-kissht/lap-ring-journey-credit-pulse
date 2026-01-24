@@ -439,3 +439,179 @@ export const lapLoanOptions: LAPOption = {
   tenure: ['5 years', '10 years', '15 years', '20 years'],
   roi: '9.5% - 12%'
 };
+
+// Journey 4: Multi-Phase LAP Application Interfaces
+export interface PhaseSubstep {
+  id: string;
+  title: string;
+  status: 'completed' | 'pending';
+  date?: string;
+}
+
+export interface LAPPhase {
+  id: string;
+  title: string;
+  description: string;
+  status: 'completed' | 'in_progress' | 'pending';
+  maxDuration: number; // in days
+  startDate?: string;
+  endDate?: string;
+  substeps?: PhaseSubstep[];
+  icon: string;
+}
+
+export interface TopUpEligibility {
+  eligible: boolean;
+  amount: number;
+  disbursalDate: string;
+  monthsSinceDisbursal: number;
+  eligibilityThreshold: number; // 6 months
+  benefits: string[];
+}
+
+export interface DisbursalDetails {
+  amount: number;
+  bankAccount: string;
+  accountLastFour: string;
+  transactionId: string;
+  disbursalDate: string;
+  firstEMIDate: string;
+  emiAmount: number;
+}
+
+// Journey 4: Multi-Phase Application User (Neha - 720)
+export const multiPhaseUser: UserProfile = {
+  id: 'user-4',
+  name: 'Neha',
+  score: 720,
+  scoreStatus: 'good',
+  lastUpdated: '24 Jan 2025',
+  lapEligible: true,
+  gapToEligibility: 0,
+  factors: [
+    {
+      id: 'f1',
+      name: 'On-time payments',
+      value: '98%',
+      status: 'good',
+      impact: 'high',
+      description: 'Consistent payment history with 1 delay in past year'
+    },
+    {
+      id: 'f2',
+      name: 'Credit utilization',
+      value: '22%',
+      status: 'excellent',
+      impact: 'high',
+      description: 'Well below 30% utilization threshold'
+    },
+    {
+      id: 'f3',
+      name: 'Credit age',
+      value: '3y 6m',
+      status: 'good',
+      impact: 'medium',
+      description: 'Established credit history'
+    },
+    {
+      id: 'f4',
+      name: 'New credit accounts',
+      value: '1',
+      status: 'good',
+      impact: 'low',
+      description: 'Recent inquiry within acceptable range'
+    },
+    {
+      id: 'f5',
+      name: 'Credit mix',
+      value: '3',
+      status: 'good',
+      impact: 'low',
+      description: 'Good mix of cards, loans, and EMIs'
+    }
+  ]
+};
+
+// Multi-Phase Journey Timeline Data
+export const multiPhaseJourneyData: LAPPhase[] = [
+  {
+    id: 'phase-1',
+    title: 'Sales Journey',
+    description: 'Initial consultation and property evaluation',
+    status: 'completed',
+    maxDuration: 2,
+    startDate: 'Jan 20, 2025',
+    endDate: 'Jan 21, 2025',
+    icon: '🤝',
+    substeps: [
+      { id: 's1', title: 'Sales call scheduled', status: 'completed', date: 'Jan 20' },
+      { id: 's2', title: 'Property site visit completed', status: 'completed', date: 'Jan 21' }
+    ]
+  },
+  {
+    id: 'phase-2',
+    title: 'Credit Journey',
+    description: 'Credit verification and documentation review',
+    status: 'in_progress',
+    maxDuration: 4,
+    startDate: 'Jan 22, 2025',
+    icon: '📋',
+    substeps: [
+      { id: 'c1', title: 'Documents uploaded', status: 'completed', date: 'Jan 22' },
+      { id: 'c2', title: 'Credit verification visit', status: 'pending' },
+      { id: 'c3', title: 'Property valuation', status: 'pending' }
+    ]
+  },
+  {
+    id: 'phase-3',
+    title: 'Operations Check',
+    description: 'Final verification and compliance checks',
+    status: 'pending',
+    maxDuration: 1,
+    icon: '✓',
+    substeps: [
+      { id: 'o1', title: 'Legal verification', status: 'pending' },
+      { id: 'o2', title: 'Final approval', status: 'pending' }
+    ]
+  },
+  {
+    id: 'phase-4',
+    title: 'Disbursal',
+    description: 'Loan amount transfer to your account',
+    status: 'pending',
+    maxDuration: 1,
+    icon: '💰',
+    substeps: [
+      { id: 'd1', title: 'Agreement signing', status: 'pending' },
+      { id: 'd2', title: 'Amount disbursed', status: 'pending' }
+    ]
+  }
+];
+
+// Top-Up Eligibility Data (for post-disbursal)
+export const topUpEligibilityData: TopUpEligibility = {
+  eligible: true,
+  amount: 1000000, // ₹10 Lakhs
+  disbursalDate: 'July 24, 2024', // 6 months ago for demo
+  monthsSinceDisbursal: 6,
+  eligibilityThreshold: 6,
+  benefits: [
+    'No additional collateral required',
+    'Quick disbursement in 24 hours',
+    'Same interest rate as existing LAP (9.5%)',
+    'Processing fee waived',
+    'Single consolidated EMI for total loan amount',
+    'Flexible tenure options (5-20 years)'
+  ]
+};
+
+// Disbursal Details
+export const disbursalDetails: DisbursalDetails = {
+  amount: 3000000, // ₹30 Lakhs
+  bankAccount: 'HDFC Bank',
+  accountLastFour: '7892',
+  transactionId: 'LAP-DISB-2024-078945',
+  disbursalDate: 'July 24, 2024',
+  firstEMIDate: 'August 5, 2024',
+  emiAmount: 28500
+};

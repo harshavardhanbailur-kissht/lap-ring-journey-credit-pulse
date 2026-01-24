@@ -34,6 +34,14 @@ const journeyOptions: JourneyOption[] = [
     scoreRange: 'Score: 635',
     color: 'yellow',
     path: '/journey3'
+  },
+  {
+    id: 'journey4',
+    title: 'Multi-Phase Application',
+    subtitle: 'Sales & Credit Visits',
+    scoreRange: 'Score: 720',
+    color: 'green',
+    path: '/journey4'
   }
 ];
 
@@ -146,6 +154,7 @@ export default function JourneySelector() {
           <li>• Journey 1: Pre-approved user flow with E-NACH setup</li>
           <li>• Journey 2: Score building with AI-customized plans</li>
           <li>• Journey 3: Quick bridge plan for almost-eligible users</li>
+          <li>• Journey 4: Multi-phase LAP application with site visits & post-disbursal top-up</li>
         </ul>
       </div>
 

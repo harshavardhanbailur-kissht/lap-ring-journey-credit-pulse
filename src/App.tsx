@@ -29,6 +29,13 @@ import J3QuickWins from './pages/journey3/QuickWins';
 import J3ScoreSimulator from './pages/journey3/ScoreSimulator';
 import J3ReserveLAP from './pages/journey3/ReserveLAP';
 
+// Journey 4 imports (Multi-Phase Application)
+import J4CreditHome from './pages/journey4/CreditHome';
+import J4InitialApproval from './pages/journey4/InitialApproval';
+import J4MultiPhaseStatus from './pages/journey4/MultiPhaseStatus';
+import J4Disbursal from './pages/journey4/Disbursal';
+import J4TopUpOffer from './pages/journey4/TopUpOffer';
+
 function App() {
   return (
     <BrowserRouter>
@@ -71,6 +78,16 @@ function App() {
             <Route path="quick-wins" element={<J3QuickWins />} />
             <Route path="score-simulator" element={<J3ScoreSimulator />} />
             <Route path="reserve-lap" element={<J3ReserveLAP />} />
+          </Route>
+
+          {/* Journey 4: Multi-Phase LAP Application */}
+          <Route path="/journey4">
+            <Route index element={<J4CreditHome />} />
+            <Route path="credit-home" element={<J4CreditHome />} />
+            <Route path="initial-approval" element={<J4InitialApproval />} />
+            <Route path="multi-phase-status" element={<J4MultiPhaseStatus />} />
+            <Route path="disbursal" element={<J4Disbursal />} />
+            <Route path="topup-offer" element={<J4TopUpOffer />} />
           </Route>
         </Routes>
       </Layout>
