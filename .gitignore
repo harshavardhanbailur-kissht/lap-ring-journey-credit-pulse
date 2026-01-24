@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+dist/
+.env
+.vercel/
+lap-journey/node_modules/
+lap-journey/dist/
+lap-journey/.vercel/

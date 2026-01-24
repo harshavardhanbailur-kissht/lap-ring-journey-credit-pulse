@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* Ring/Kissht Brand Colors */
+@theme {
+  /* Primary */
+  --color-ring-blue: #3B5BDB;
+  --color-ring-dark-blue: #1E3A8A;
+  --color-ring-navy: #1E2A4A;
+
+  /* Backgrounds */
+  --color-ring-light-bg: #F8FAFC;
+  --color-ring-card-bg: #FFFFFF;
+  --color-ring-input-bg: #F1F5F9;
+
+  /* Status Colors */
+  --color-ring-excellent: #22C55E;
+  --color-ring-good: #84CC16;
+  --color-ring-average: #F59E0B;
+  --color-ring-poor: #EF4444;
+
+  /* Score Gauge Gradient */
+  --color-gauge-poor: #EF4444;
+  --color-gauge-fair: #F97316;
+  --color-gauge-average: #F59E0B;
+  --color-gauge-good: #84CC16;
+  --color-gauge-excellent: #22C55E;
+
+  /* Text */
+  --color-text-primary: #1E293B;
+  --color-text-secondary: #64748B;
+  --color-text-muted: #94A3B8;
+
+  /* Navigation */
+  --color-nav-bg: #FFFFFF;
+  --color-nav-border: #E5E5E5;
+  --color-nav-text: #8E8E93;
+  --color-nav-active: #3B5BDB;
+
+  /* Spacing for mobile */
+  --spacing-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --nav-height: 56px;
+}
+
+/* Base styles */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  background-color: var(--color-ring-light-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
+}
+
+/* Prevent iOS zoom on input focus */
+input, select, textarea {
+  font-size: 16px;
+}
+
+/* Touch target base class */
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Icon button pattern */
+.icon-button {
+  width: 24px;
+  height: 24px;
+  padding: 10px;
+  margin: -10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.icon-button:active {
+  opacity: 0.7;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Mobile-first container */
+.container-mobile {
+  max-width: 428px;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+}
+
+/* Content area with bottom nav padding */
+.content-with-nav {
+  padding-bottom: calc(var(--nav-height) + var(--spacing-safe-bottom) + 16px);
+}
