@@ -5,13 +5,20 @@ import { useState, useEffect } from 'react';
  * Mobile-first approach
  */
 export function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(false);
+  const [matches, setMatches] = useState(() => {
+    // Check if window is defined (for SSR)
+    if (typeof window !== 'undefined') {
+      return window.matchMedia(query).matches;
+    }
+    return false;
+  });
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const media = window.matchMedia(query);
 
-    // Set initial value
-    setMatches(media.matches);
+    // Initial value is already set in useState initializer
 
     // Create listener
     const listener = (event: MediaQueryListEvent) => {
@@ -36,7 +43,9 @@ export function useIsMobile(): boolean {
 }
 
 export function useIsTablet(): boolean {
-  return useMediaQuery('(min-width: 768px)') && !useMediaQuery('(min-width: 1024px)');
+  const isTablet = useMediaQuery('(min-width: 768px)');
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
+  return isTablet && !isDesktop;
 }
 
 export function useIsDesktop(): boolean {

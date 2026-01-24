@@ -1,5 +1,4 @@
-import type { ProductType } from './ProductCTA';
-import { productConfigs } from './ProductCTA';
+import { productConfigs, type ProductType } from '../../data/productConfigs';
 import Button from './Button';
 
 interface GuidelinesModalProps {

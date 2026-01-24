@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useId } from 'react';
 
 interface ScoreGaugeProps {
   score: number;
@@ -35,18 +35,14 @@ export default function ScoreGauge({
   animated = true,
   size = 'md',
 }: ScoreGaugeProps) {
-  const [displayScore, setDisplayScore] = useState(animated ? minScore : score);
+  const [displayScore, setDisplayScore] = useState(minScore);
   const [progress, setProgress] = useState(0);
 
   // Calculate the percentage for the gauge
   const targetProgress = ((score - minScore) / (maxScore - minScore)) * 100;
 
   useEffect(() => {
-    if (!animated) {
-      setDisplayScore(score);
-      setProgress(targetProgress);
-      return;
-    }
+    if (!animated) return;
 
     // Animate score counting up
     const duration = 1500;
@@ -83,10 +79,12 @@ export default function ScoreGauge({
   const circumference = Math.PI * radius;
 
   // Calculate stroke dash offset for progress
-  const strokeDashoffset = circumference - (progress / 100) * circumference;
+  const currentProgress = animated ? progress : targetProgress;
+  const strokeDashoffset = circumference - (currentProgress / 100) * circumference;
 
   // Create gradient stops for the gauge
-  const gradientId = `scoreGradient-${Math.random().toString(36).substr(2, 9)}`;
+  const id = useId();
+  const gradientId = `scoreGradient-${id.replace(/:/g, '')}`;
 
   return (
     <div className="flex flex-col items-center">
@@ -147,7 +145,7 @@ export default function ScoreGauge({
             className="font-bold text-[var(--color-text-primary)]"
             style={{ fontSize }}
           >
-            {displayScore}
+            {animated ? displayScore : score}
           </span>
         </div>
       </div>
