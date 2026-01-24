@@ -2,24 +2,14 @@
 
 A React-based web application for the Lap Ring Journey, featuring credit pulse indicators and responsive layouts for both mobile and desktop.
 
-## Project Structure
-
-- `lap-journey/`: Main React application (Vite + TypeScript + Tailwind CSS)
-- `docs/`: Design specifications and planning documents (located within `lap-journey/docs`)
-
 ## Getting Started
 
-1. Navigate to the project directory:
-   ```bash
-   cd lap-journey
-   ```
-
-2. Install dependencies:
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-3. Run the development server:
+2. Run the development server:
    ```bash
    npm run dev
    ```
