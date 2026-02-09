@@ -8,7 +8,8 @@ import J1LAPApproved from './pages/journey1/LAPApproved';
 import J1ApplicationStatus from './pages/journey1/ApplicationStatus';
 import J1ENACHSetup from './pages/journey1/ENACHSetup';
 import J1EMIReminder from './pages/journey1/EMIReminder';
-import J1BTTopUp from './pages/journey1/BTTopUp';
+import J1ExistingLAPForm from './pages/journey1/ExistingLAPForm';
+import J1InternalTopUp from './pages/journey1/InternalTopUp';
 
 // Journey 2 imports (Poor Score)
 import J2CreditHome from './pages/journey2/CreditHome';
@@ -52,7 +53,8 @@ function App() {
             <Route path="application-status" element={<J1ApplicationStatus />} />
             <Route path="enach-setup" element={<J1ENACHSetup />} />
             <Route path="emi-reminder" element={<J1EMIReminder />} />
-            <Route path="bt-topup" element={<J1BTTopUp />} />
+            <Route path="existing-lap-form" element={<J1ExistingLAPForm />} />
+            <Route path="internal-topup" element={<J1InternalTopUp />} />
           </Route>
 
           {/* Journey 2: Poor Score (<600) - Build Score */}

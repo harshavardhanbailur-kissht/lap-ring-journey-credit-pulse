@@ -615,3 +615,44 @@ export const disbursalDetails: DisbursalDetails = {
   firstEMIDate: 'August 5, 2024',
   emiAmount: 28500
 };
+
+// Internal Top-up Feature Data
+export interface ExistingLAPDetails {
+  lender: string;
+  loanAmount: number;
+  outstandingBalance: number;
+  currentEMI: number;
+  remainingTenureMonths: number;
+  interestRate: number;
+}
+
+// Lender options for dropdown
+export const lapLenderOptions = [
+  'HDFC Bank',
+  'ICICI Bank',
+  'SBI',
+  'Axis Bank',
+  'Kotak Mahindra Bank',
+  'Punjab National Bank',
+  'Bank of Baroda',
+  'Bajaj Finance',
+  'Tata Capital',
+  'L&T Finance',
+  'Other'
+];
+
+// Internal Top-up offer data
+export const internalTopUpOffer = {
+  maxAdditionalAmount: 1000000, // ₹10 Lakhs
+  interestRate: '9.5%',
+  processingFee: 'Waived',
+  validity: '30 days',
+  benefits: [
+    'No additional collateral required',
+    'Quick disbursement in 24 hours',
+    'Single EMI for total loan amount',
+    'No impact on credit score',
+    'Same interest rate as existing LAP',
+    'Flexible tenure options'
+  ]
+};

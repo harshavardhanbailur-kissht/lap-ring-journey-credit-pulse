@@ -92,10 +92,10 @@ export default function EMIReminder() {
 
         {/* Next */}
         <button
-          onClick={() => navigate('/journey1/bt-topup')}
+          onClick={() => navigate('/journey1/existing-lap-form')}
           className="w-full py-3 text-[var(--color-ring-blue)] font-medium"
         >
-          View BT Top-up Offer →
+          Check Internal Top-up Eligibility →
         </button>
       </div>
     </div>
