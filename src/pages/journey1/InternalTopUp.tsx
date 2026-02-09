@@ -5,6 +5,7 @@ import { internalTopUpOffer } from '../../data/mockData';
 export default function InternalTopUp() {
   const navigate = useNavigate();
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [applicationRef] = useState(() => Math.floor(Math.random() * 10000));
   const offer = internalTopUpOffer;
 
   const handleShowInterest = () => {
@@ -40,7 +41,7 @@ export default function InternalTopUp() {
               within 24 hours to proceed with your application.
             </p>
             <p className="text-sm text-[var(--color-text-muted)] mb-4">
-              Application Reference: TOPUP-2025-{Math.floor(Math.random() * 10000)}
+              Application Reference: TOPUP-2025-{applicationRef}
             </p>
             <button
               onClick={() => navigate('/journey1')}
